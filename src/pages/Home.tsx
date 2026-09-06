@@ -1,4 +1,4 @@
-import { ArrowRight, Play, Phone, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, Play, Phone, CheckCircle2, ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
@@ -21,75 +21,161 @@ const scaleUp = {
 // ==========================================
 function Hero() {
   return (
-    <section id="home" className="relative w-full min-h-screen pt-32 pb-24 flex items-center justify-center overflow-hidden bg-navy">
-      <div className="absolute inset-0 z-0">
-        <motion.img 
-          initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 2, ease: "easeOut" }}
-          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2000&auto=format&fit=crop" 
-          alt="Logistics warehouse" 
-          className="w-full h-full object-cover opacity-30"
+    <section
+      id="home"
+      className="relative w-full bg-[#020e28] flex flex-col justify-between pt-32 sm:pt-36 lg:pt-40 pb-8 lg:pb-12 min-h-[100svh] lg:min-h-[860px] overflow-hidden"
+    >
+      {/* ── Background image + deep blue overlays ── */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <motion.img
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2.5, ease: 'easeOut' }}
+          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2000&auto=format&fit=crop"
+          alt="Logistics warehouse"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-transparent"></div>
-      </div>
-      
-      <div className="inner relative z-10 w-full">
-        <motion.div 
-          className="max-w-3xl"
-          variants={staggerContainer} initial="hidden" animate="visible"
-        >
-          <motion.div variants={fadeUp} className="flex items-center gap-2 mb-6">
-            <span className="tag-label text-orange uppercase tracking-wider font-bold">WORLDWIDE SERVICES</span>
-            <span className="w-12 h-px bg-orange" />
-          </motion.div>
-          
-          <motion.h1 variants={fadeUp} className="heading-display text-white mb-6 leading-tight text-5xl md:text-7xl">
-            Streamlined <span className="text-orange">Logistics</span> For Your Business
-          </motion.h1>
-          
-          <motion.p variants={fadeUp} className="font-dm text-white/80 text-xl leading-relaxed mb-10 max-w-2xl">
-            With over four decades of experience providing solutions to large-scale enterprises throughout the globe, we offer end-to-end logistics tailored for specific markets.
-          </motion.p>
-          
-          <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-6">
-            <Link to="/request-quote" className="btn-primary py-4 px-8 rounded-full">
-              Free Quote! <ArrowRight size={18} />
-            </Link>
-            <div className="flex items-center gap-4 cursor-pointer group">
-              <div className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center border border-white/20 group-hover:bg-white group-hover:border-white transition-all duration-300">
-                <Play className="text-white group-hover:text-orange ml-1" size={20} fill="currentColor" />
-              </div>
-              <span className="font-outfit font-600 text-white group-hover:text-orange transition-colors">Watch Video</span>
-            </div>
-          </motion.div>
-        </motion.div>
+        {/* Deep blue color overlay mask */}
+        <div className="absolute inset-0 bg-[#020e28]/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020e28] via-[#020e28]/85 to-[#020e28]/45" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#020e28] via-transparent to-transparent" />
       </div>
 
-      {/* Floating Stats */}
-      <motion.div 
-        className="absolute bottom-0 left-0 right-0 hidden lg:block"
-        initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.8 }}
-      >
-        <div className="inner">
-          <div className="bg-white rounded-t-3xl p-8 flex justify-between shadow-2xl relative translate-y-2">
-            {[
-              { label: 'Seamless Transit', val: '24/7' },
-              { label: 'Team Members', val: '150+' },
-              { label: 'Years of Experience', val: '25+' },
-              { label: 'Satisfied Customers', val: '10K+' }
-            ].map((stat, i) => (
-              <div key={i} className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-orange/10 flex items-center justify-center">
-                  <CheckCircle2 className="text-orange" size={24} />
+      {/* ── Hero Main Content ── */}
+      <div className="relative z-10 w-full flex-1 flex items-center py-4 lg:py-8">
+        <div className="inner w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column: Heading & CTAs */}
+            <motion.div
+              className="lg:col-span-8 max-w-2xl"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.div variants={fadeUp} className="flex items-center gap-3 mb-4">
+                <span className="tag-label text-orange uppercase tracking-widest font-bold text-xs sm:text-sm">
+                  WORLDWIDE SERVICES
+                </span>
+                <span className="w-10 h-px bg-orange" />
+              </motion.div>
+
+              <motion.h1
+                variants={fadeUp}
+                className="heading-display text-white text-4xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[68px] leading-[1.05] tracking-tight uppercase mb-6"
+              >
+                Streamlined <span className="text-orange">Logistics</span> For Your Business
+              </motion.h1>
+
+              <motion.p
+                variants={fadeUp}
+                className="font-dm text-white/80 text-base sm:text-lg leading-relaxed mb-8 max-w-xl"
+              >
+                With over four decades of experience providing solutions to large-scale enterprises throughout the globe, we offer end-to-end logistics tailored for specific markets.
+              </motion.p>
+
+              <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-5">
+                <Link to="/request-quote" className="btn-primary py-4 px-8 rounded-full text-sm font-outfit font-semibold">
+                  Free Quote! <ArrowRight size={17} />
+                </Link>
+                <div className="flex items-center gap-3 cursor-pointer group">
+                  <div className="w-12 h-12 rounded-full bg-white/10 border border-white/25 flex items-center justify-center group-hover:bg-white transition-all duration-300">
+                    <Play className="text-white group-hover:text-orange ml-0.5" size={17} fill="currentColor" />
+                  </div>
+                  <span className="font-outfit font-semibold text-white/90 group-hover:text-orange transition-colors text-sm">
+                    Watch Video
+                  </span>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Column: 35k+ Pill and Rotating Badge */}
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+              className="hidden lg:flex lg:col-span-4 flex-col items-end justify-center gap-7"
+            >
+              {/* 35k+ clients pill */}
+              <motion.div
+                variants={fadeUp}
+                className="flex items-center gap-3.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full pl-2 pr-6 py-2 shadow-xl hover:bg-white/15 transition-all"
+              >
+                <div className="flex -space-x-2.5">
+                  {['photo-1534528741775-53994a69daeb', 'photo-1507003211169-0a1dd7228f2d', 'photo-1500648767791-00dcc994a43e'].map((id) => (
+                    <img
+                      key={id}
+                      className="w-10 h-10 rounded-full ring-2 ring-[#020e28] object-cover"
+                      src={`https://images.unsplash.com/${id}?w=100&auto=format&fit=crop&q=80`}
+                      alt="Client"
+                    />
+                  ))}
                 </div>
                 <div>
-                  <h4 className="font-outfit font-bold text-navy text-xl">{stat.val}</h4>
-                  <p className="font-dm text-gray-body text-sm">{stat.label}</p>
+                  <p className="font-outfit font-extrabold text-white text-lg leading-none">35k+</p>
+                  <p className="font-dm text-white/70 text-xs mt-0.5">Happy Clients of Our Services</p>
+                </div>
+              </motion.div>
+
+              {/* Rotating "Let's Get Started" badge */}
+              <motion.div variants={fadeUp}>
+                <Link
+                  to="/request-quote"
+                  className="group relative w-[148px] h-[148px] rounded-full bg-[#020e28] flex items-center justify-center shadow-2xl hover:scale-105 transition-all duration-300 border border-white/25 shrink-0"
+                >
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ repeat: Infinity, duration: 14, ease: 'linear' }}
+                    className="absolute inset-0"
+                  >
+                    <svg viewBox="0 0 148 148" className="w-full h-full">
+                      <defs>
+                        <path id="badgeRing" d="M 74,74 m -54,0 a 54,54 0 1,1 108,0 a 54,54 0 1,1 -108,0" />
+                      </defs>
+                      <text fill="white" fontSize="10.5" fontFamily="Outfit, sans-serif" fontWeight="700" letterSpacing="3">
+                        <textPath href="#badgeRing" startOffset="0%">
+                          ✦ LET'S GET STARTED ✦ LET'S GET STARTED
+                        </textPath>
+                      </text>
+                    </svg>
+                  </motion.div>
+                  <div className="w-[60px] h-[60px] rounded-full border border-white/30 flex items-center justify-center group-hover:border-white group-hover:bg-white/15 transition-all duration-300">
+                    <ArrowUpRight className="text-white group-hover:scale-110 transition-transform" size={24} strokeWidth={2} />
+                  </div>
+                </Link>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Stats bar ── */}
+      <div className="relative z-10 w-full pt-4 lg:pt-6">
+        <div className="inner">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+            className="bg-white rounded-2xl lg:rounded-[24px] px-6 lg:px-8 py-5 lg:py-6 shadow-2xl border border-gray-100 grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-center"
+          >
+            {[
+              { label: 'Seamless Transit',    val: '24/7'  },
+              { label: 'Team Members',        val: '150+'  },
+              { label: 'Years of Experience', val: '25+'   },
+              { label: 'Satisfied Customers', val: '10K+'  },
+            ].map((s, i) => (
+              <div key={i} className="flex items-center gap-3.5 sm:gap-4">
+                <div className="w-11 h-11 lg:w-12 lg:h-12 rounded-full bg-orange/10 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="text-orange" size={22} />
+                </div>
+                <div className="min-w-0">
+                  <h4 className="font-outfit font-extrabold text-navy text-xl lg:text-2xl leading-none">{s.val}</h4>
+                  <p className="font-dm text-gray-body text-xs sm:text-sm mt-1 truncate">{s.label}</p>
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }
@@ -99,7 +185,7 @@ function Hero() {
 // ==========================================
 function AboutSection() {
   return (
-    <section id="about" className="section-pad bg-gray-off lg:pt-32">
+    <section id="about" className="section-pad bg-gray-off lg:pt-28">
       <div className="inner">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <motion.div 
@@ -108,11 +194,12 @@ function AboutSection() {
           >
              <div className="relative rounded-[30px] overflow-hidden aspect-[4/5] shadow-xl">
                <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=1000&q=80" alt="Truck Transport" className="absolute inset-0 w-full h-full object-cover" />
-             </div>
-             {/* Badge */}
-             <div className="absolute -bottom-8 -right-8 bg-orange text-white p-8 rounded-[30px] hidden md:block max-w-xs shadow-2xl">
-                <h3 className="heading-display text-5xl mb-2">25+</h3>
-                <p className="font-outfit font-bold text-lg leading-tight">Years Of Working Experience In Logistics</p>
+               
+               {/* Badge inside image wrapper with nice padding */}
+               <div className="absolute bottom-6 right-6 bg-orange text-white p-6 sm:p-7 rounded-[24px] shadow-2xl max-w-[240px]">
+                  <h3 className="heading-display text-4xl sm:text-5xl mb-1 text-white">25+</h3>
+                  <p className="font-outfit font-bold text-sm sm:text-base leading-tight text-white">Years Of Working Experience In Logistics</p>
+               </div>
              </div>
           </motion.div>
           
@@ -152,7 +239,7 @@ function Services() {
   const services = [
     { title: 'International Transport', desc: 'Redefining international transport with reliable, fast, and seamless connectivity across global destinations.', img: 'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=600&q=80', link: '/services/international-transport' },
     { title: 'Local Truck Transport', desc: 'Reliable and efficient local truck transport, ensuring timely deliveries and smooth logistics within your region.', img: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&q=80', link: '/services/local-truck-transport' },
-    { title: 'Rail Personal Delivery', desc: 'Fast and secure rail delivery services, ensuring your personal shipments reach their destination safely and on time.', img: 'https://images.unsplash.com/photo-1541882195000-0e10cc106d33?w=600&q=80', link: '/services/rail-personal-delivery' },
+    { title: 'Rail Personal Delivery', desc: 'Fast and secure rail delivery services, ensuring your personal shipments reach their destination safely and on time.', img: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&q=80', link: '/services/rail-personal-delivery' },
   ]
   return (
     <section id="services" className="section-pad bg-white">
@@ -476,7 +563,7 @@ function BlogSection() {
   const blogs = [
     { cat: 'Cargo Terminals', title: "Transigo Named a Finalist For Year' 25 Best Choice Award", author: 'Adam Smith', role: 'Founder', link: '/blog/transigo-named-a-finalist-for-year-25-best-choice-award', img: 'https://images.unsplash.com/photo-1542296332-2e4473faf563?w=600&q=80' },
     { cat: 'Road Transport', title: 'Focus logistics secure new landmark Contracts', author: 'Charles Edward', role: 'CEO', link: '/blog/focus-logistics-secure-new-landmark-contracts', img: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&q=80' },
-    { cat: 'Rail Transport', title: 'Green Logistics Solutions for a Greener Future', author: 'Robert Lee', role: 'Co-Founder', link: '/blog/green-logistics-solutions-for-a-greener-future', img: 'https://images.unsplash.com/photo-1541882195000-0e10cc106d33?w=600&q=80' },
+    { cat: 'Rail Transport', title: 'Green Logistics Solutions for a Greener Future', author: 'Robert Lee', role: 'Co-Founder', link: '/blog/green-logistics-solutions-for-a-greener-future', img: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&q=80' },
   ]
   return (
     <section className="section-pad bg-white">

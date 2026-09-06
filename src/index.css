@@ -1,5 +1,31 @@
 @import "tailwindcss";
 
+
+/* ── Outfit (Fontshare via Framer CDN) ─────────────── */
+@font-face {
+  font-family: "Outfit";
+  src: url("https://framerusercontent.com/third-party-assets/fontshare/wf/WAAMEHKHJC5RGH5HYZXARMZDOGNO2EWO/IMX7NRNUMJVK7YFRJRZSA3UNPLUBPYIJ/QWBFHLNJNNJC3X2PA4WN6Q2H5G7OG6MX.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("https://framerusercontent.com/third-party-assets/fontshare/wf/A0Wcc7NgXmJuuFdquHDRiZpzZw0.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("https://framerusercontent.com/third-party-assets/fontshare/wf/VMAVI5EHLU77KACBXFKSI223A3BMYMT/KGPZSBKAZPJQJIDUI6CQETV3BKZULTEA/H5PDA446U7YOJH5A6HXMFOX33XDBMWB5.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+
 @theme {
   --color-navy: #020e28;
   --color-navy-mid: #0e2d3a;
@@ -15,6 +41,8 @@
   --font-outfit: 'Outfit', sans-serif;
   --font-dm: 'DM Sans', sans-serif;
   --font-inter: 'Inter', sans-serif;
+  --font-fragment-mono: 'Fragment Mono', monospace;
+  --font-geist-mono: 'Geist Mono', monospace;
 
   --radius-card: 30px;
   --radius-btn: 4px;
@@ -45,9 +73,11 @@ body {
 ::-webkit-scrollbar-thumb { background: #fd5523; border-radius: 3px; }
 
 /* ── Typography helpers ────────────────────────────── */
-.font-outfit { font-family: 'Outfit', sans-serif; }
-.font-dm     { font-family: 'DM Sans', sans-serif; }
-.font-inter  { font-family: 'Inter', sans-serif; }
+.font-outfit        { font-family: 'Outfit', sans-serif; }
+.font-dm            { font-family: 'DM Sans', sans-serif; }
+.font-inter         { font-family: 'Inter', sans-serif; }
+.font-fragment-mono { font-family: 'Fragment Mono', monospace; }
+.font-geist-mono    { font-family: 'Geist Mono', monospace; }
 
 /* ── Display heading (hero) ────────────────────────── */
 .heading-display {
